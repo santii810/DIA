@@ -19,8 +19,7 @@ namespace GestionPedidos.View
         {
             throw new NotImplementedException();
         }
-
-
+        
         private void Inserta()
         {
             throw new NotImplementedException();

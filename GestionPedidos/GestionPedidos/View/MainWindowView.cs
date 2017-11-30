@@ -21,7 +21,14 @@ namespace GestionPedidos.View
 
         private void BuildPanelLista()
         {
-            throw new NotImplementedException();
+            Panel pnlLista = new Panel();
+            pnlLista.SuspendLayout();
+            pnlLista.Dock = DockStyle.Fill;
+
+
+
+
+
         }
 
         private void BuildMenu()
