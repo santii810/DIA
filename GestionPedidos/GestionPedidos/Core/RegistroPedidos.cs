@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace GestionPedidos.Core
@@ -16,7 +18,7 @@ namespace GestionPedidos.Core
         private List<Pedido> pedidos;
 
         /// <summary>
-        /// Crea un <see cref="T:GestionPedidos.Core.RegistroPedidos"/> sin pedidos.
+        /// Crea un <see cref="T:Pedidos.Core.RegistroPedidos"/> sin pedidos.
         /// </summary>
         public RegistroPedidos()
         {
@@ -32,13 +34,69 @@ namespace GestionPedidos.Core
             this.pedidos.Add(pedido);
         }
 
+        /// <summary>
+        /// Elimina un pedido dado.
+        /// </summary>
+        /// <returns>True si se ha eliminado, False en otro caso.</returns>
+        /// <param name="pedido">El <see cref="Pedido"/> a eliminar.</param>
+		public bool Remove(Pedido pedido)
+        {
+            return this.pedidos.Remove(pedido);
+        }
+
+        /// <summary>
+        /// Devuelve el total de pedidos guardados en este registro.
+        /// </summary>
+        /// <value>El total de pedidos como entero.</value>
+		public int CountPedidos
+        {
+            get { return this.pedidos.Count; }
+        }
+
+        /// <summary>
+        /// Elimina todos los pedidos almacenados.
+        /// </summary>
+		public void Clear()
+        {
+            this.pedidos.Clear();
+        }
+
+        /// <summary>
+        /// Comprueba si el pedido dado se encuentra guardado.
+        /// </summary>
+        /// <returns>True si se encuentra, False en otro caso.</returns>
+        /// <param name="pedido">El <see cref="Pedido"/> a comprobar.</param>
+		public bool Contains(Pedido pedido)
+        {
+            return this.pedidos.Contains(pedido);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="T:System.String"/> that represents the current <see cref="T:Pedidos.Core.RegistroViajes"/>.
+        /// </summary>
+        /// <returns>A <see cref="T:System.String"/> that represents the current <see cref="T:Pedidos.Core.RegistroViajes"/>.</returns>
+		public override string ToString()
+        {
+            var toret = new StringBuilder();
+
+            foreach (Pedido pedido in this.pedidos)
+            {
+                toret.AppendLine(pedido.ToString());
+            }
+
+            return toret.ToString();
+        }
+
+        /// <summary>
+        /// Guarda la lista de pedidos como xml.
+        /// </summary>
         public void GuardaXml()
         {
             this.GuardaXml(ArchivoXml);
         }
 
         /// <summary>
-        /// Guarda la lista de viajes como XML.
+        /// Guarda la lista de pedidos como XML.
         /// <param name="nf">El nombre del archivo.</param>
         /// </summary>
         public void GuardaXml(string nf)
@@ -50,13 +108,63 @@ namespace GestionPedidos.Core
             {
                 raiz.Add(
                     new XElement(EtqPedido,
-                            new XAttribute(EtqIdPedido, pedido.Nombre),
+                            new XAttribute(EtqIdPedido, pedido.PedidoId.ToString()),
                             new XElement(EtqCliente, pedido.Cliente.ToString()),
                             new XElement(EtqEntrega, pedido.Entrega.ToString())));
             }
 
             doc.Add(raiz);
             doc.Save(nf);
+        }
+
+        /// <summary>
+        /// Recupera los pedidos desde un archivo XML.
+        /// </summary>
+        /// <returns>Un <see cref="RegistroPedidos"/> con los
+        /// <see cref="Pedido"/>'s.</returns>
+        /// <param name="f">El nombre del archivo.</param>
+        public static RegistroPedidos RecuperaXml(string nf)
+        {
+            var toret = new RegistroPedidos();
+
+            try
+            {
+                var doc = XDocument.Load(nf);
+
+                if (doc.Root != null
+                  && doc.Root.Name == EtqPedidos)
+                {
+                    var pedidos = doc.Root.Elements(EtqPedido);
+
+                    foreach (XElement pedidoXml in pedidos)
+                    {
+                        toret.Add(new Pedido(
+                            (int)pedidoXml.Attribute(EtqIdPedido),
+                            (int)pedidoXml.Element(EtqCliente),
+                            (DateTime)pedidoXml.Element(EtqEntrega)));
+                    }
+                }
+            }
+            catch (XmlException)
+            {
+                toret.Clear();
+            }
+            catch (IOException)
+            {
+                toret.Clear();
+            }
+
+            return toret;
+        }
+
+        /// <summary>
+        /// Crea un registro de viajes con la lista de viajes recuperada
+        /// del archivo por defecto.
+        /// </summary>
+        /// <returns>Un <see cref="RegistroViajes"/>.</returns>
+		public static RegistroViajes RecuperaXml()
+        {
+            return RecuperaXml(ArchivoXml);
         }
     }
 }

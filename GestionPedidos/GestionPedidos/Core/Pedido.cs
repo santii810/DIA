@@ -8,13 +8,13 @@ namespace GestionPedidos.Core
 {
     public class Pedido
     {
-        public string Nombre { get; private set; }
+        public int PedidoId { get; private set; }
         public int Cliente { get; private set; }
         public DateTime Entrega { get; private set; }
 
-        public Pedido(string nombre,  int cliente, DateTime entrega)
+        public Pedido(int pedido,  int cliente, DateTime entrega)
         {
-            Nombre = nombre;
+            PedidoId = pedido;
             Cliente = cliente;
             Entrega = entrega;
         }
