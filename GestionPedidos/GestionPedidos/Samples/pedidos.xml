@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pedidos>
+    <pedido id="1">
+        <idCliente>1</idCliente>
+		<fechaEntrega>12/12/2017 10:30:00</fechaEntrega>
+    </pedido>
+    <pedido id="2">
+        <idCliente>1</idCliente>
+		<fechaEntrega>12/12/2017 16:30:00</fechaEntrega>
+    </pedido>
+    <pedido id="3">
+        <idCliente>2</idCliente>
+		<fechaEntrega>11/12/2017 11:30:00</fechaEntrega>
+    </pedido>
+    <pedido id="4">
+        <idCliente>3</idCliente>
+		<fechaEntrega>11/12/2017 10:30:00</fechaEntrega>
+    </pedido>    
+    <pedido id="5">
+        <idCliente>3</idCliente>
+		<fechaEntrega>11/12/2017 14:30:00</fechaEntrega>
+    </pedido>    
+    <pedido id="6">
+        <idCliente>4</idCliente>
+		<fechaEntrega>14/12/2017 19:00:00</fechaEntrega>
+    </pedido>    
+    <pedido id="7">
+        <idCliente>4</idCliente>
+		<fechaEntrega>14/12/2017 15:00:00</fechaEntrega>
+    </pedido>    
+    <pedido id="8">
+        <idCliente>1</idCliente>
+		<fechaEntrega>10/12/2017 10:30:00</fechaEntrega>
+    </pedido>    
+</pedidos>
