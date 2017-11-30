@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -158,11 +159,11 @@ namespace GestionPedidos.Core
         }
 
         /// <summary>
-        /// Crea un registro de viajes con la lista de viajes recuperada
+        /// Crea un registro de pedidos con la lista de pedidos recuperada
         /// del archivo por defecto.
         /// </summary>
-        /// <returns>Un <see cref="RegistroViajes"/>.</returns>
-		public static RegistroViajes RecuperaXml()
+        /// <returns>Un <see cref="RegistroPedidos"/>.</returns>
+		public static RegistroPedidos RecuperaXml()
         {
             return RecuperaXml(ArchivoXml);
         }
