@@ -18,5 +18,16 @@ namespace GestionPedidos.Core
             Cliente = cliente;
             Entrega = entrega;
         }
+
+        /// <summary>
+        /// Returns a <see cref="T:System.String"/> that represents the current <see cref="T:Pedidos.Core.Pedido"/>.
+        /// </summary>
+        /// <returns>A <see cref="T:System.String"/> that represents the current <see cref="T:Pedidos.Core.Pedido"/>.</returns>
+        public override string ToString()
+        {
+            return string.Format(
+                "Pedido {0} del cliente {1} con entrega en la fecha: {3}\n",
+                this.PedidoId, this.Cliente, this.Entrega);
+        }
     }
 }
