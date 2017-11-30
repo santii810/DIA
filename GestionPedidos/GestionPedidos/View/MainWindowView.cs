@@ -24,11 +24,6 @@ namespace GestionPedidos.View
             Panel pnlLista = new Panel();
             pnlLista.SuspendLayout();
             pnlLista.Dock = DockStyle.Fill;
-
-
-
-
-
         }
 
         private void BuildMenu()
@@ -81,7 +76,7 @@ namespace GestionPedidos.View
         {
             var assembly = System.Reflection.Assembly.GetEntryAssembly();
             var resourceAppIcon = assembly.
-                GetManifestResourceStream("GestionPedidos.Res.appIcon.png");
+                GetManifestResourceStream("GestionPedidos.Res.appIcon.ico");
 
             if (resourceAppIcon != null)
             {

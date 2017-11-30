@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionPedidos.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,8 @@ namespace GestionPedidos.View
 
         private void Salir()
         {
-            throw new NotImplementedException();
+            this.pedidos.GuardaXml();
+            this.Dispose(true);
         }
         
         private void Inserta()
@@ -33,5 +35,7 @@ namespace GestionPedidos.View
         {
             throw new NotImplementedException();
         }
+
+        private RegistroPedidos pedidos;
     }
 }
