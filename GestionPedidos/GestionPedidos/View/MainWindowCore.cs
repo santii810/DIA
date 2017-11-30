@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace GestionPedidos.View
 {
+
+
+
+
     public partial class MainWindow : Form
     {
         public MainWindow()
@@ -18,13 +22,15 @@ namespace GestionPedidos.View
 
         private void Salir()
         {
-            this.pedidos.GuardaXml();
+    //        this.pedidos.GuardaXml();
             this.Dispose(true);
         }
         
         private void Inserta()
         {
-            throw new NotImplementedException();
+            InsertWindow iw = new InsertWindow();
+            Application.Run(iw);
+
         }
 
         private void Guardar()

@@ -16,16 +16,56 @@ namespace GestionPedidos.View
             this.BuildIcons();
             this.BuildStatus();
             this.BuildMenu();
-            this.BuildPanelLista();
+
+
+
+            this.SuspendLayout();
+            this.Controls.Add(this.pnlPpal);
+            this.pnlPpal = new Panel()
+            {
+                Dock = DockStyle.Fill
+            };
+
+            this.pnlPpal.SuspendLayout();
+            this.Controls.Add(this.pnlPpal);
+            this.pnlPpal.Controls.Add(this.BuildCalendarPanel());
+            this.pnlPpal.Controls.Add(this.BuildShowPanel());
+
+            this.pnlPpal.ResumeLayout(false);
+
+
+
+            this.MinimumSize = new Size(600, 400);
+                 this.Resize += (obj, e) => this.ResizeWindow();
+            this.Text = "Gestion Pedidos";
+
+            this.ResumeLayout(true);
+                    this.ResizeWindow();
+            this.Closed += (sender, e) => this.Salir();
+            //           this.Shown += (sender, e) => this.Actualiza();
         }
 
-        private void BuildPanelLista()
+        private ShowPanel BuildShowPanel()
         {
-            Panel pnlLista = new Panel();
-            pnlLista.SuspendLayout();
-            pnlLista.Dock = DockStyle.Fill;
+            ShowPanel pnlShowDate = new ShowPanel();
+            pnlShowDate.SuspendLayout();
+            pnlShowDate.Dock = DockStyle.Fill;
+            return pnlShowDate;
         }
 
+
+        /* Contruyo el calendarPanel y lo añado al mainwindow*/
+        private CalendarPanel BuildCalendarPanel()
+        {
+            CalendarPanel pnlCalendar = new CalendarPanel();
+            pnlCalendar.SuspendLayout();
+            pnlCalendar.Dock = DockStyle.Right;
+            return pnlCalendar;
+        }
+
+
+
+        /* Añade los elementos del menu*/
         private void BuildMenu()
         {
             this.mPpal = new MainMenu();
@@ -58,12 +98,6 @@ namespace GestionPedidos.View
             this.Menu = mPpal;
         }
 
-
-
-
-
-
-
         /*Añade una status bar en Dock-bot*/
         private void BuildStatus()
         {
@@ -86,11 +120,16 @@ namespace GestionPedidos.View
             return;
         }
 
+        private void ResizeWindow()
+        {
+            // Tomar las nuevas medidas
+            int width = this.pnlPpal.ClientRectangle.Width;                               
+        }
 
 
+        private ShowPanel pnlShowDate;
         private StatusBar sbStatus;
         private Panel pnlPpal;
-
 
         /*Menu atribbutes*/
         private MainMenu mPpal;
