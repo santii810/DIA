@@ -28,28 +28,28 @@ namespace GestionPedidos.View
 
             this.pnlPpal.SuspendLayout();
             this.Controls.Add(this.pnlPpal);
-            this.pnlPpal.Controls.Add(this.BuildCalendarPanel());
             this.pnlPpal.Controls.Add(this.BuildShowPanel());
+            this.pnlPpal.Controls.Add(this.BuildCalendarPanel());
 
             this.pnlPpal.ResumeLayout(false);
 
 
 
             this.MinimumSize = new Size(600, 400);
-                 this.Resize += (obj, e) => this.ResizeWindow();
+            this.Resize += (obj, e) => this.ResizeWindow();
             this.Text = "Gestion Pedidos";
 
             this.ResumeLayout(true);
-                    this.ResizeWindow();
+            this.ResizeWindow();
             this.Closed += (sender, e) => this.Salir();
             //           this.Shown += (sender, e) => this.Actualiza();
         }
 
         private ShowPanel BuildShowPanel()
         {
-            ShowPanel pnlShowDate = new ShowPanel();
+            pnlShowDate = new ShowPanel();
             pnlShowDate.SuspendLayout();
-            pnlShowDate.Dock = DockStyle.Fill;
+            pnlShowDate.Dock = DockStyle.Right;
             return pnlShowDate;
         }
 
@@ -59,7 +59,7 @@ namespace GestionPedidos.View
         {
             CalendarPanel pnlCalendar = new CalendarPanel();
             pnlCalendar.SuspendLayout();
-            pnlCalendar.Dock = DockStyle.Right;
+            pnlCalendar.Dock = DockStyle.Left;
             return pnlCalendar;
         }
 
@@ -123,7 +123,9 @@ namespace GestionPedidos.View
         private void ResizeWindow()
         {
             // Tomar las nuevas medidas
-            int width = this.pnlPpal.ClientRectangle.Width;                               
+            int width = this.pnlPpal.ClientRectangle.Width;
+            int height = this.pnlPpal.ClientRectangle.Height;
+            pnlShowDate.updateWidth(width, height);
         }
 
 

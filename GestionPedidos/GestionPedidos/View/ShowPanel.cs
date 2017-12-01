@@ -11,7 +11,6 @@ namespace GestionPedidos.View
         public ShowPanel()
         {
             this.SuspendLayout();
-            this.BackColor = Color.Green;
 
             // Crear gridview
             this.grdLista = new DataGridView()
@@ -93,7 +92,7 @@ namespace GestionPedidos.View
             this.ResumeLayout(false);
         }
 
-        public void updateWidth(int width)
+        public void updateWidth(int width,int  height)
         {
             /*165 = tamaño del Month calendar*/
             int panelWidth = width - 165;
@@ -101,7 +100,7 @@ namespace GestionPedidos.View
             this.Width = panelWidth;
             for (int i = 0; i < colWidths.Length; i++)
             {
-                colWidths[i] = width / (colWidths.Length - 1);
+                colWidths[i] = panelWidth / (colWidths.Length);
             }
 
             int cont = 0;
@@ -109,6 +108,8 @@ namespace GestionPedidos.View
             {
                 col.Width = colWidths[cont++]; 
             }
+
+            this.grdLista.Height = height;
         }
 
         public string COL_0_TITLE = "Id pedido";
