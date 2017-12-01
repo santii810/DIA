@@ -147,7 +147,7 @@ namespace GestionPedidos.View
         /// Obtiene el cliente introducido por el usuario.
         /// </summary>
         /// <value>El id de cliente como un entero.</value>
-        public string Cliente => this.edCliente.Text;
+        public double Cliente => Convert.ToDouble(this.edCliente.Value);
 
         /// <summary>
         /// Obtiene la fecha de entrega del pedido introducida por el usuario.

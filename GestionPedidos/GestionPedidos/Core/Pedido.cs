@@ -10,10 +10,10 @@ namespace GestionPedidos.Core
     {
         public int PedidoId { get; private set; }
         public string Nombre { get; private set; }
-        public int Cliente { get; private set; }
+        public double Cliente { get; private set; }
         public DateTime Entrega { get; private set; }
 
-        public Pedido(int pedido, string nombre, int cliente, DateTime entrega)
+        public Pedido(int pedido, string nombre, double cliente, DateTime entrega)
         {
             PedidoId = pedido;
             Nombre = nombre;
