@@ -57,6 +57,7 @@ namespace GestionPedidos.View
         {
             var toret = new Panel();
             this.edEntrega = new DateTimePicker { Dock = DockStyle.Fill };
+            this.edEntrega.Format = DateTimePickerFormat.Time;
 
             var lbEntrega = new Label
             {

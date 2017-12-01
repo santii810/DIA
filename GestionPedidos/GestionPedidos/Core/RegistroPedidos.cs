@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml;
@@ -13,8 +14,6 @@ namespace GestionPedidos.Core
         public const string EtqPedidos = "pedidos";
         public const string EtqPedido = "pedido";
         public const string EtqEntrega = "fechaEntrega";
-
-       
         public const string EtqCliente = "idCliente";
         public const string EtqNombre = "nombre";
         public const string EtqIdPedido = "id";
@@ -121,12 +120,13 @@ namespace GestionPedidos.Core
 
             foreach (Pedido pedido in this.pedidos)
             {
+            DateTime dateVal = DateTime.ParseExact(pedido.Entrega.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 raiz.Add(
                     new XElement(EtqPedido,
                             new XAttribute(EtqIdPedido, pedido.PedidoId.ToString()),
                             new XElement(EtqNombre, pedido.Nombre),
                             new XElement(EtqCliente, pedido.Cliente.ToString()),
-                            new XElement(EtqEntrega, pedido.Entrega.ToString())));
+                            new XElement(EtqEntrega, dateVal)));
             }
 
             doc.Add(raiz);
