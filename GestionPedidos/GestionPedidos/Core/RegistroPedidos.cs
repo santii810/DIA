@@ -14,7 +14,7 @@ namespace GestionPedidos.Core
         public const string EtqPedido = "pedido";
         public const string EtqEntrega = "fechaEntrega";
 
-       
+
         public const string EtqCliente = "idCliente";
         public const string EtqNombre = "nombre";
         public const string EtqIdPedido = "id";

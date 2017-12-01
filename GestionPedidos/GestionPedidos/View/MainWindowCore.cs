@@ -47,8 +47,7 @@ namespace GestionPedidos.View
                 this.pedidos.Add(new Pedido(10, dlgInserta.Nombre,
                                                     dlgInserta.Cliente,
                                                   dlgInserta.Entrega));
-
-                this.Actualizar();
+                this.Actualizar(dlgInserta.Entrega.Date);
             }
         }
 

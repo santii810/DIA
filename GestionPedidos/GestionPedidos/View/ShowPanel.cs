@@ -94,7 +94,7 @@ namespace GestionPedidos.View
             this.ResumeLayout(false);
         }
 
-   
+
         public void updateList(List<Pedido> pedidos)
         {
             grdLista.Rows.Clear();
@@ -122,11 +122,11 @@ namespace GestionPedidos.View
             this.Width = panelWidth;
 
 
-            colWidths[0] = (int) (panelWidth * 0.15);
-            colWidths[1] = (int) (panelWidth * 0.25);
-            colWidths[2] = (int) (panelWidth * 0.25);
-            colWidths[3] = (int) (panelWidth * 0.35);
-            
+            colWidths[0] = (int)(panelWidth * 0.15);
+            colWidths[1] = (int)(panelWidth * 0.25);
+            colWidths[2] = (int)(panelWidth * 0.25);
+            colWidths[3] = (int)(panelWidth * 0.35);
+
             int cont = 0;
             foreach (DataGridViewColumn col in grdLista.Columns)
             {
