@@ -22,15 +22,26 @@ namespace GestionPedidos.View
 
         private void Salir()
         {
-    //        this.pedidos.GuardaXml();
+            //        this.pedidos.GuardaXml();
             this.Dispose(true);
         }
-        
+
         private void Inserta()
         {
-            InsertWindow iw = new InsertWindow();
-            Application.Run(iw);
+            DlgInserta dlgInserta = new DlgInserta();
+            if (dlgInserta.ShowDialog() == DialogResult.OK)
+            {
+                //      this.pedidos.Add(new Pedido(dlgInserta.CiudadOrigen,
+                //                                    dlgInserta.CiudadDestino,
+                //                                  dlgInserta.Kms));
 
+                this.Actualiza();
+            }
+        }
+
+        private void Actualiza()
+        {
+            throw new NotImplementedException();
         }
 
         private void Guardar()

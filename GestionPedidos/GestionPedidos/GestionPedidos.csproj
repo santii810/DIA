@@ -51,6 +51,9 @@
     <Compile Include="View\CalendarPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="View\DlgInserta.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\InsertWindow.cs">
       <SubType>Form</SubType>
     </Compile>
