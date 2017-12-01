@@ -11,9 +11,10 @@ namespace GestionPedidos.View
     {
 
         MonthCalendar calendar;
-        public CalendarPanel()
+        MainWindow mw;
+        public CalendarPanel(MainWindow mw)
         {
-
+            this.mw = mw;
           calendar = new MonthCalendar()
             {
                 Dock = DockStyle.Fill,
@@ -31,9 +32,7 @@ namespace GestionPedidos.View
         private void mcr_DateChanged(object sender, DateRangeEventArgs e)
         {
             //Tu lógica de refresco del día seleccionado
-            
-            Console.WriteLine(calendar.SelectionStart.ToString());
-
+            mw.Actualizar(calendar.SelectionStart);
         }
     }
 }

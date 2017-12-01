@@ -61,7 +61,7 @@ namespace GestionPedidos.View
         /* Contruyo el calendarPanel y lo añado al mainwindow*/
         private CalendarPanel BuildCalendarPanel()
         {
-            CalendarPanel pnlCalendar = new CalendarPanel();
+            CalendarPanel pnlCalendar = new CalendarPanel(this);
             pnlCalendar.SuspendLayout();
             pnlCalendar.Dock = DockStyle.Left;
             return pnlCalendar;
