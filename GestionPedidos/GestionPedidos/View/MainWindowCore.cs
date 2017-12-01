@@ -17,6 +17,7 @@ namespace GestionPedidos.View
         public MainWindow()
         {
             this.Build();
+           pedidos = RegistroPedidos.RecuperaXml();
         }
 
 
