@@ -29,6 +29,17 @@ namespace GestionPedidos.Core
             this.pedidos = new List<Pedido>();
         }
 
+
+        public Pedido Get(int n)
+        {
+            return pedidos[n];
+        }
+
+        public List<Pedido> GetList()
+        {
+            return pedidos;
+        }
+
         /// <summary>
         /// Inserta un pedido dado al final de la lista.
         /// </summary>

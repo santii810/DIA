@@ -14,10 +14,21 @@ namespace GestionPedidos.View
 
     public partial class MainWindow : Form
     {
+
+
+        public const int ColNum = 0;
+        public const int ColKms = 1;
+        public const int ColOrg = 2;
+        public const int ColDest = 3;
+        public const int ColHoraLLegada = 4;
+
+
+
         public MainWindow()
         {
             this.Build();
-           pedidos = RegistroPedidos.RecuperaXml();
+            pedidos = RegistroPedidos.RecuperaXml();
+            Actualizar();
         }
 
 
@@ -36,14 +47,30 @@ namespace GestionPedidos.View
                 //                                    dlgInserta.CiudadDestino,
                 //                                  dlgInserta.Kms));
 
-                this.Actualiza();
+                this.Actualizar();
             }
         }
 
-        private void Actualiza()
+        private void Actualizar()
         {
-            throw new NotImplementedException();
+            Actualizar(DateTime.Now);
         }
+
+
+        private void Actualizar(DateTime fecha)
+        {
+            List<Pedido> pedidosFiltrados = new List<Pedido>();
+            foreach (Pedido item in pedidos.GetList())
+            {
+                if(item.Entrega.Date == fecha.Date)
+                {
+                    pedidosFiltrados.Add(item);
+                }
+            }
+            this.pnlShowDate.updateList(pedidosFiltrados);
+        }
+
+
 
         private void Guardar()
         {
@@ -54,6 +81,6 @@ namespace GestionPedidos.View
             throw new NotImplementedException();
         }
 
-        private RegistroPedidos pedidos;
+        public static RegistroPedidos pedidos;
     }
 }

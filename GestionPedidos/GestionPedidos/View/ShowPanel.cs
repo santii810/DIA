@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GestionPedidos.Core;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -28,7 +30,7 @@ namespace GestionPedidos.View
             this.grdLista.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             this.grdLista.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
 
-           
+
 
 
             var textCellTemplate0 = new DataGridViewTextBoxCell();
@@ -92,7 +94,27 @@ namespace GestionPedidos.View
             this.ResumeLayout(false);
         }
 
-        public void updateWidth(int width,int  height)
+   
+        public void updateList(List<Pedido> pedidos)
+        {
+            grdLista.Rows.Clear();
+
+            for (int i = 0; i < pedidos.Count; i++)
+            {
+                Pedido ped = MainWindow.pedidos.Get(i);
+                this.grdLista.Rows.Add();
+                DataGridViewRow row = this.grdLista.Rows[i];
+
+                row.Cells[0].Value = ped.PedidoId.ToString();
+                row.Cells[1].Value = ped.Nombre;
+                row.Cells[2].Value = ped.Cliente.ToString();
+                row.Cells[3].Value = ped.Entrega.ToString();
+            }
+
+        }
+
+
+        public void updateWidth(int width, int height)
         {
             /*165 = tamaño del Month calendar*/
             int panelWidth = width - 165;
@@ -106,7 +128,7 @@ namespace GestionPedidos.View
             int cont = 0;
             foreach (DataGridViewColumn col in grdLista.Columns)
             {
-                col.Width = colWidths[cont++]; 
+                col.Width = colWidths[cont++];
             }
 
             this.grdLista.Height = height;
