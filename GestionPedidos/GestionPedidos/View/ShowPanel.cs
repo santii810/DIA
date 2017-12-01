@@ -120,11 +120,13 @@ namespace GestionPedidos.View
             int panelWidth = width - 165;
             this.grdLista.Width = panelWidth;
             this.Width = panelWidth;
-            for (int i = 0; i < colWidths.Length; i++)
-            {
-                colWidths[i] = panelWidth / (colWidths.Length);
-            }
 
+
+            colWidths[0] = (int) (panelWidth * 0.15);
+            colWidths[1] = (int) (panelWidth * 0.25);
+            colWidths[2] = (int) (panelWidth * 0.25);
+            colWidths[3] = (int) (panelWidth * 0.35);
+            
             int cont = 0;
             foreach (DataGridViewColumn col in grdLista.Columns)
             {
