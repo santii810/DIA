@@ -14,6 +14,7 @@ namespace GestionPedidos.Core
         public const string EtqPedido = "pedido";
         public const string EtqEntrega = "fechaEntrega";
         public const string EtqCliente = "idCliente";
+        public const string EtqNombre = "nombre";
         public const string EtqIdPedido = "id";
 
         private List<Pedido> pedidos;
@@ -110,6 +111,7 @@ namespace GestionPedidos.Core
                 raiz.Add(
                     new XElement(EtqPedido,
                             new XAttribute(EtqIdPedido, pedido.PedidoId.ToString()),
+                            new XElement(EtqNombre, pedido.Nombre),
                             new XElement(EtqCliente, pedido.Cliente.ToString()),
                             new XElement(EtqEntrega, pedido.Entrega.ToString())));
             }
@@ -141,6 +143,7 @@ namespace GestionPedidos.Core
                     {
                         toret.Add(new Pedido(
                             (int)pedidoXml.Attribute(EtqIdPedido),
+                            (string)pedidoXml.Element(EtqNombre),
                             (int)pedidoXml.Element(EtqCliente),
                             (DateTime)pedidoXml.Element(EtqEntrega)));
                     }
