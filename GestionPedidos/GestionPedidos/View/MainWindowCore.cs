@@ -41,11 +41,12 @@ namespace GestionPedidos.View
         private void Inserta()
         {
             DlgInserta dlgInserta = new DlgInserta();
+      
             if (dlgInserta.ShowDialog() == DialogResult.OK)
             {
-                //      this.pedidos.Add(new Pedido(dlgInserta.CiudadOrigen,
-                //                                    dlgInserta.CiudadDestino,
-                //                                  dlgInserta.Kms));
+                this.pedidos.Add(new Pedido(10, dlgInserta.Nombre,
+                                                    dlgInserta.Cliente,
+                                                  dlgInserta.Entrega));
 
                 this.Actualizar();
             }
