@@ -120,13 +120,12 @@ namespace GestionPedidos.Core
 
             foreach (Pedido pedido in this.pedidos)
             {
-            DateTime dateVal = DateTime.ParseExact(pedido.Entrega.ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 raiz.Add(
                     new XElement(EtqPedido,
                             new XAttribute(EtqIdPedido, pedido.PedidoId.ToString()),
                             new XElement(EtqNombre, pedido.Nombre),
                             new XElement(EtqCliente, pedido.Cliente.ToString()),
-                            new XElement(EtqEntrega, dateVal)));
+                            new XElement(EtqEntrega, pedido.Entrega.ToString())));
             }
 
             doc.Add(raiz);
@@ -154,11 +153,15 @@ namespace GestionPedidos.Core
 
                     foreach (XElement pedidoXml in pedidos)
                     {
+                        string date = (string)pedidoXml.Element(EtqEntrega);
+                        DateTime dateTime = new DateTime();
+                        dateTime = DateTime.Parse(date);
+
                         toret.Add(new Pedido(
                             (int)pedidoXml.Attribute(EtqIdPedido),
                             (string)pedidoXml.Element(EtqNombre),
                             (int)pedidoXml.Element(EtqCliente),
-                            (DateTime)pedidoXml.Element(EtqEntrega)));
+                            dateTime));
                     }
                 }
             }

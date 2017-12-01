@@ -154,7 +154,7 @@ namespace GestionPedidos.View
         /// Obtiene la fecha de entrega del pedido introducida por el usuario.
         /// </summary>
         /// <value>La fecha de entrega como datetime.</value>
-        public DateTime Entrega => Convert.ToDateTime(this.edEntrega.Value);
+        public DateTime Entrega => Convert.ToDateTime(this.edEntrega.Text);
 
     }
 }
