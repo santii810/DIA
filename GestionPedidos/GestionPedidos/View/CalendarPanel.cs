@@ -15,14 +15,14 @@ namespace GestionPedidos.View
         public CalendarPanel(MainWindow mw)
         {
             this.mw = mw;
-          calendar = new MonthCalendar()
+            calendar = new MonthCalendar()
             {
                 Dock = DockStyle.Fill,
                 Width = 300,
                 ShowToday = true,
                 MaxSelectionCount = 1,
                 CalendarDimensions = new System.Drawing.Size(6, 3)
-        };
+            };
             calendar.DateChanged += mcr_DateChanged;
 
             this.Controls.Add(calendar);

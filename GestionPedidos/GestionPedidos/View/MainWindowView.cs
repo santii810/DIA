@@ -10,7 +10,7 @@ namespace GestionPedidos.View
 {
     public partial class MainWindow
     {
-        
+
 
 
 

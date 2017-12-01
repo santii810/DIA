@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace GestionPedidos.View
 {
-    internal class DlgInserta :Form
+    internal class DlgInserta : Form
     {
         private TextBox edNombre;
         private NumericUpDown edCliente;
@@ -18,7 +18,7 @@ namespace GestionPedidos.View
         private Panel BuildPnlNombre()
         {
             var toret = new Panel();
-            this.edNombre = new TextBox {  Dock = DockStyle.Fill };
+            this.edNombre = new TextBox { Dock = DockStyle.Fill };
 
             var lbNombre = new Label
             {
