@@ -1,101 +1,73 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GestionPedidos.View
 {
     internal class DlgInserta :Form
     {
+        private TextBox edNombre;
+        private NumericUpDown edCliente;
+        private DateTimePicker edEntrega;
+
         public DlgInserta()
         {
             this.Build();
         }
 
-        private Panel BuildPnlKms()
+        private Panel BuildPnlNombre()
         {
             var toret = new Panel();
-            this.edKms = new NumericUpDown
-            {
-                Value = 0,
-                TextAlign = HorizontalAlignment.Right,
-                Dock = DockStyle.Fill,
-                Minimum = 1
-            };
+            this.edNombre = new TextBox {  Dock = DockStyle.Fill };
 
-            var lbKms = new Label
+            var lbNombre = new Label
             {
-                Text = "Kms:",
+                Text = "Nombre del pedido:",
                 Dock = DockStyle.Left
             };
 
-            toret.Controls.Add(this.edKms);
-            toret.Controls.Add(lbKms);
+            toret.Controls.Add(this.edNombre);
+            toret.Controls.Add(lbNombre);
             toret.Dock = DockStyle.Top;
-            toret.MaximumSize = new Size(int.MaxValue, edKms.Height * 2);
+            toret.MaximumSize = new Size(int.MaxValue, edNombre.Height * 2);
 
             return toret;
         }
 
-        private Panel BuildPnlCiudadOrigen()
+        private Panel BuildPnlCliente()
         {
-            var toret = new Panel { Dock = DockStyle.Top };
-            this.edCiudadOrigen = new TextBox { Dock = DockStyle.Fill };
-            var lbCiudadOrigen = new Label
+            var toret = new Panel();
+            this.edCliente = new NumericUpDown { Dock = DockStyle.Fill };
+
+            var lbCliente = new Label
             {
-                Text = "Ciudad origen:",
+                Text = "Número de cliente:",
                 Dock = DockStyle.Left
             };
 
-            toret.Controls.Add(this.edCiudadOrigen);
-            toret.Controls.Add(lbCiudadOrigen);
-            toret.MaximumSize = new Size(int.MaxValue, edCiudadOrigen.Height * 2);
-
-            this.edCiudadOrigen.Validating += (sender, cancelArgs) => {
-                var btAccept = (Button)this.AcceptButton;
-                bool invalid = string.IsNullOrWhiteSpace(this.CiudadOrigen);
-
-                invalid = invalid || !char.IsLetter(this.CiudadOrigen[0]);
-
-                if (invalid)
-                {
-                    this.edCiudadOrigen.Text = "¿Ciudad de origen?";
-                }
-
-                btAccept.Enabled = !invalid;
-                cancelArgs.Cancel = invalid;
-            };
+            toret.Controls.Add(this.edCliente);
+            toret.Controls.Add(lbCliente);
+            toret.Dock = DockStyle.Top;
+            toret.MaximumSize = new Size(int.MaxValue, edCliente.Height * 2);
 
             return toret;
         }
 
-        private Panel BuildPnlCiudadDestino()
+        private Panel BuildPnlEntrega()
         {
             var toret = new Panel();
-            this.edCiudadDestino = new TextBox { Dock = DockStyle.Fill };
-            var lbCiudadDestino = new Label()
+            this.edEntrega = new DateTimePicker { Dock = DockStyle.Fill };
+
+            var lbEntrega = new Label
             {
-                Text = "Ciudad destino:",
+                Text = "Fecha de la entrega:",
                 Dock = DockStyle.Left
             };
 
-            toret.Controls.Add(this.edCiudadDestino);
-            toret.Controls.Add(lbCiudadDestino);
+            toret.Controls.Add(this.edEntrega);
+            toret.Controls.Add(lbEntrega);
             toret.Dock = DockStyle.Top;
-            toret.MaximumSize = new Size(int.MaxValue, edCiudadDestino.Height * 2);
-
-            this.edCiudadDestino.Validating += (sender, cancelArgs) => {
-                var btAccept = (Button)this.AcceptButton;
-                bool invalid = string.IsNullOrWhiteSpace(this.CiudadDestino);
-
-                invalid = invalid || !char.IsLetter(this.CiudadDestino[0]);
-
-                if (invalid)
-                {
-                    this.edCiudadDestino.Text = "¿Ciudad de destino?";
-                }
-
-                btAccept.Enabled = !invalid;
-                cancelArgs.Cancel = invalid;
-            };
+            toret.MaximumSize = new Size(int.MaxValue, edEntrega.Height * 2);
 
             return toret;
         }
@@ -138,14 +110,14 @@ namespace GestionPedidos.View
             pnlInserta.SuspendLayout();
             this.Controls.Add(pnlInserta);
 
-            var pnlCiudadOrigen = this.BuildPnlCiudadOrigen();
-            pnlInserta.Controls.Add(pnlCiudadOrigen);
+            var pnlNombre = this.BuildPnlNombre();
+            pnlInserta.Controls.Add(pnlNombre);
 
-            var pnlCiudadDestino = this.BuildPnlCiudadDestino();
-            pnlInserta.Controls.Add(pnlCiudadDestino);
+            var pnlCliente = this.BuildPnlCliente();
+            pnlInserta.Controls.Add(pnlCliente);
 
-            var pnlKms = this.BuildPnlKms();
-            pnlInserta.Controls.Add(pnlKms);
+            var pnlEntrega = this.BuildPnlEntrega();
+            pnlInserta.Controls.Add(pnlEntrega);
 
 
             var pnlBotones = this.BuildPnlBotones();
@@ -153,10 +125,10 @@ namespace GestionPedidos.View
 
             pnlInserta.ResumeLayout(true);
 
-            this.Text = "Nuevo viaje";
+            this.Text = "Nuevo pedido";
             this.Size = new Size(400,
-                            pnlCiudadOrigen.Height + pnlCiudadDestino.Height
-                            + pnlKms.Height + pnlBotones.Height);
+                            pnlNombre.Height + pnlCliente.Height
+                            + pnlEntrega.Height + pnlBotones.Height);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MinimizeBox = false;
             this.MaximizeBox = false;
@@ -164,40 +136,24 @@ namespace GestionPedidos.View
             this.ResumeLayout(false);
         }
 
-        /// <summary>
-        /// Valida los datos en el dlg.
-        /// </summary>
-        /// <param name="e">Los params. del evento.</param>
-        private void OnValidate(System.ComponentModel.CancelEventArgs e)
-        {
-            bool toret = string.IsNullOrWhiteSpace(this.CiudadOrigen);
-
-            toret = toret || string.IsNullOrWhiteSpace(this.CiudadDestino);
-          //  toret = toret || double.TryParse(this.edKms.Text, out double res);
-
-            e.Cancel = toret;
-        }
 
         /// <summary>
-        /// Obtiene la ciudad origen introducida por el usuario.
+        /// Obtiene el nombre de pedido introducido por el usuario.
         /// </summary>
-        /// <value>Una cadena de caracteres con la ciudad de origen.</value>
-        public string CiudadOrigen => this.edCiudadOrigen.Text;
+        /// <value>Una cadena de caracteres con el nombre del pedido.</value>
+        public string Nombre => this.edNombre.Text;
 
         /// <summary>
-        /// Obtiene la ciudad destino introducida por el usuario.
+        /// Obtiene el cliente introducido por el usuario.
         /// </summary>
-        /// <value>Una cadena de caracteres con la ciudad de destino.</value>
-        public string CiudadDestino => this.edCiudadDestino.Text;
+        /// <value>El id de cliente como un entero.</value>
+        public string Cliente => this.edCliente.Text;
 
         /// <summary>
-        /// Obtiene los kms. introducidos por el usuario.
+        /// Obtiene la fecha de entrega del pedido introducida por el usuario.
         /// </summary>
-        /// <value>Los kms., como entero.</value>
-        public double Kms => System.Convert.ToDouble(this.edKms.Value);
+        /// <value>La fecha de entrega como datetime.</value>
+        public DateTime Entrega => Convert.ToDateTime(this.edEntrega.Value);
 
-        private TextBox edCiudadOrigen;
-        private TextBox edCiudadDestino;
-        private NumericUpDown edKms;
     }
 }
