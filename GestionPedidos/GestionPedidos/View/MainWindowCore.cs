@@ -34,14 +34,14 @@ namespace GestionPedidos.View
 
         private void Salir()
         {
-            //        this.pedidos.GuardaXml();
+            this.pedidos.GuardaXml();
             this.Dispose(true);
         }
 
         private void Inserta()
         {
             DlgInserta dlgInserta = new DlgInserta();
-      
+
             if (dlgInserta.ShowDialog() == DialogResult.OK)
             {
                 this.pedidos.Add(new Pedido(10, dlgInserta.Nombre,
@@ -63,7 +63,7 @@ namespace GestionPedidos.View
             List<Pedido> pedidosFiltrados = new List<Pedido>();
             foreach (Pedido item in pedidos.GetList())
             {
-                if(item.Entrega.Date == fecha.Date)
+                if (item.Entrega.Date == fecha.Date)
                 {
                     pedidosFiltrados.Add(item);
                 }
@@ -75,7 +75,7 @@ namespace GestionPedidos.View
 
         private void Guardar()
         {
-            throw new NotImplementedException();
+            this.pedidos.GuardaXml();
         }
         private void Eliminar()
         {
