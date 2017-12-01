@@ -101,7 +101,7 @@ namespace GestionPedidos.View
 
             for (int i = 0; i < pedidos.Count; i++)
             {
-                Pedido ped = MainWindow.pedidos.Get(i);
+                Pedido ped = pedidos[i];
                 this.grdLista.Rows.Add();
                 DataGridViewRow row = this.grdLista.Rows[i];
 

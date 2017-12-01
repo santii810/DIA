@@ -31,7 +31,7 @@ namespace GestionPedidos.View
         private void mcr_DateChanged(object sender, DateRangeEventArgs e)
         {
             //Tu lógica de refresco del día seleccionado
-
+            
             Console.WriteLine(calendar.SelectionStart.ToString());
 
         }

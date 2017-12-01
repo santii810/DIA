@@ -51,13 +51,13 @@ namespace GestionPedidos.View
             }
         }
 
-        private void Actualizar()
+        public void Actualizar()
         {
             Actualizar(DateTime.Now);
         }
 
 
-        private void Actualizar(DateTime fecha)
+        public void Actualizar(DateTime fecha)
         {
             List<Pedido> pedidosFiltrados = new List<Pedido>();
             foreach (Pedido item in pedidos.GetList())
@@ -81,6 +81,6 @@ namespace GestionPedidos.View
             throw new NotImplementedException();
         }
 
-        public static RegistroPedidos pedidos;
+        public RegistroPedidos pedidos;
     }
 }
