@@ -3,41 +3,41 @@
   <pedido id="1">
     <idCliente>1</idCliente>
     <nombre>Ordenador</nombre>
-    <fechaEntrega>12/12/2017 10:30:00</fechaEntrega>
+    <fechaEntrega>2017-12-12T10:30:00</fechaEntrega>
   </pedido>
   <pedido id="2">
     <idCliente>1</idCliente>
     <nombre>Radio</nombre>
-    <fechaEntrega>12/12/2017 16:30:00</fechaEntrega>
+    <fechaEntrega>2017-12-12T16:30:00</fechaEntrega>
   </pedido>
   <pedido id="3">
     <idCliente>2</idCliente>
     <nombre>Libros</nombre>
-    <fechaEntrega>11/12/2017 11:30:00</fechaEntrega>
+    <fechaEntrega>2017-12-11T11:30:00</fechaEntrega>
   </pedido>
   <pedido id="4">
     <idCliente>3</idCliente>
     <nombre>Portátil</nombre>
-    <fechaEntrega>11/12/2017 10:30:00</fechaEntrega>
+    <fechaEntrega>2017-12-11T10:30:00</fechaEntrega>
   </pedido>
   <pedido id="5">
     <idCliente>3</idCliente>
     <nombre>Ratón</nombre>
-    <fechaEntrega>11/12/2017 14:30:00</fechaEntrega>
+    <fechaEntrega>2017-12-11T14:30:00</fechaEntrega>
   </pedido>
   <pedido id="6">
     <idCliente>4</idCliente>
     <nombre>Teclado y ratón</nombre>
-    <fechaEntrega>14/12/2017 19:00:00</fechaEntrega>
+    <fechaEntrega>2017-12-14T19:00:00</fechaEntrega>
   </pedido>
   <pedido id="7">
     <idCliente>4</idCliente>
     <nombre>Lámparas</nombre>
-    <fechaEntrega>14/12/2017 15:00:00</fechaEntrega>
+    <fechaEntrega>2017-12-14T15:00:00</fechaEntrega>
   </pedido>
   <pedido id="8">
     <idCliente>1</idCliente>
     <nombre>Pantalla</nombre>
-    <fechaEntrega>10/12/2017 10:30:00</fechaEntrega>
+    <fechaEntrega>2017-12-10T10:30:00</fechaEntrega>
   </pedido>
 </pedidos>
