@@ -24,8 +24,6 @@ namespace GestionPedidos.View
         };
             calendar.DateChanged += mcr_DateChanged;
 
-            this.BackColor = System.Drawing.Color.Red;
-
             this.Controls.Add(calendar);
             this.Width = 165;
         }
