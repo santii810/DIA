@@ -44,7 +44,7 @@ namespace GestionPedidos.View
 
             if (dlgInserta.ShowDialog() == DialogResult.OK)
             {
-                this.pedidos.Add(new Pedido(10, dlgInserta.Nombre,
+                this.pedidos.Add(new Pedido(pedidos.CountPedidos, dlgInserta.Nombre,
                                                     dlgInserta.Cliente,
                                                   dlgInserta.Entrega));
                 this.Actualizar(dlgInserta.Entrega.Date);
