@@ -84,7 +84,7 @@ namespace GestionPedidos.View
             this.opGuardar.Click += (sender, e) => this.Guardar();
 
             this.opEliminar = new MenuItem("&Eliminar") { Shortcut = Shortcut.CtrlD };
-            this.opEliminar.Click += (sender, e) => this.Eliminar();
+            this.opEliminar.Click += (sender, e) => this.Eliminar(pnlShowDate.getCurrentPedido());
 
             this.opInsertar = new MenuItem("&Insertar")
             {
@@ -112,16 +112,18 @@ namespace GestionPedidos.View
         /* Buildea el icono de la app*/
         private void BuildIcons()
         {
-            var assembly = System.Reflection.Assembly.GetEntryAssembly();
-            var resourceAppIcon = assembly.
-                GetManifestResourceStream("GestionPedidos.Res.appIcon.ico");
+            Text = "Gestion de Pedidos";
 
-            if (resourceAppIcon != null)
+            //Añadir icono
+            try
             {
-                this.Icon = Icon.FromHandle(
-                    new Bitmap(resourceAppIcon).GetHicon());
+                Icon = new Icon(@"..\..\Res\appIcon.ico");
             }
-            return;
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Environment.Exit(1);
+            }
         }
 
         private void ResizeWindow()

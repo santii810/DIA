@@ -31,8 +31,6 @@ namespace GestionPedidos.View
             this.grdLista.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
 
 
-
-
             var textCellTemplate0 = new DataGridViewTextBoxCell();
             var textCellTemplate1 = new DataGridViewTextBoxCell();
             var textCellTemplate2 = new DataGridViewTextBoxCell();
@@ -134,6 +132,19 @@ namespace GestionPedidos.View
             }
 
             this.grdLista.Height = height;
+        }
+
+        public Pedido getCurrentPedido()
+        {
+            int id = (int)grdLista.CurrentRow.Cells[0].Value;
+            string nombre = (string)grdLista.CurrentRow.Cells[1].Value;
+            int idCliente = (int)grdLista.CurrentRow.Cells[2].Value;
+            string entrega = (string)grdLista.CurrentRow.Cells[3].Value;
+            DateTime dateTime = new DateTime();
+            dateTime = DateTime.Parse(entrega);
+
+            return new Pedido(id,nombre,idCliente,dateTime);
+
         }
 
         public string COL_0_TITLE = "Id pedido";

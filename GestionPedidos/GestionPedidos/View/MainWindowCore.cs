@@ -15,15 +15,6 @@ namespace GestionPedidos.View
     public partial class MainWindow : Form
     {
 
-
-        public const int ColNum = 0;
-        public const int ColKms = 1;
-        public const int ColOrg = 2;
-        public const int ColDest = 3;
-        public const int ColHoraLLegada = 4;
-
-
-
         public MainWindow()
         {
             this.Build();
@@ -76,9 +67,10 @@ namespace GestionPedidos.View
         {
             this.pedidos.GuardaXml();
         }
-        private void Eliminar()
+
+        private void Eliminar(Pedido pedido)
         {
-            throw new NotImplementedException();
+            this.pedidos.Remove(pedido);
         }
 
         public RegistroPedidos pedidos;
